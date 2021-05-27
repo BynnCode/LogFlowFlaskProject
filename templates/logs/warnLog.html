@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+    <script src="static/assets/js/echarts.min.js"></script>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>日志模块</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="../temp.html"><span>模块数据展示与分析</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="temp.html"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/index">首页<i class="la la-angle-down"></i></a></li>
+          <li class="drop-down">
+              <a>Suricata攻击检测模块</a>
+              <ul>
+                  <li><a href="/fastlog">日志数据</a></li>
+                  <li><a href="/srcip">源IP</a></li>
+                  <li><a href="/dstip">目的IP</a></li>
+                  <li><a href="/type">攻击类型</a></li>
+                  <li><a href="/attackFlow">攻击展示</a></li>
+                  <li><a href="/attackFlow">攻击流量</a></li>
+                  <li><a href="/flow">正常异常流量</a></li>
+              </ul>
+          </li>
+          <li class="drop-down">
+              <a>攻击和流量分析模块</a>
+              <ul>
+                  <li><a href="/flowaccess">流量访问</a></li>
+                  <li><a href="/queryasset">被访问资产</a></li>
+                  <li><a href="/flowtrend">当前流量趋势</a></li>
+              </ul>
+          </li>
+          <li class="drop-down">
+              <a>资产模块</a>
+              <ul>
+                  <li><a href="/assetvaluation">资产评估</a></li>
+                  <li><a href="/assetview">资产一览</a></li>
+                  <li><a href="/assetbug">资产漏洞</a></li>
+                  <li><a href="/bugsource">漏洞来源</a></li>
+                  <li><a href="/locasset">各地资产统计</a></li>
+                  <li><a href="/safetydevice">安全设备</a></li>
+                  <li><a href="/softtype">软件类型</a></li>
+                  <li><a href="/devicetype">资产设备类型</a></li>
+              </ul>
+          </li>
+          <li class="drop-down">
+              <a>日志模块</a>
+              <ul>
+                  <li><a href="/commentpart">评价部分</a></li>
+                  <li><a href="/warnnum">告警数量</a></li>
+                  <li><a href="/warnnumip">告警数量(IP)</a></li>
+                  <li><a href="/warnlog">告警数量日志</a></li>
+              </ul>
+          </li>
+
+        </ul>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+ <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row no-gutters">
+          <div class="col-lg-6 video-box">
+            <div id="TypeMain" style="width: 700px;height:450px;margin-left: 10%"></div>
+
+          </div>
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center about-content">
+
+            <div class="section-title" style="margin-left: 10%">
+              <h2>告警数量日志</h2>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+    <script>
+        var chartDom = document.getElementById('TypeMain');
+        var myChart = echarts.init(chartDom);
+
+        var option = {
+                  tooltip:{
+                  trigger:'axis',
+                  axisPointer:{   //坐标轴指示器，坐标轴触发有效
+                   type:'shadow'  //默认为直线，可选为：'line'|'shadow'
+                  }
+                 },
+                    xAxis: {
+                        type: 'category',
+                        data: ['IP1', 'IP2', 'IP3', 'IP4', 'IP5']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        data: [120, 200, 150, 80, 110],
+                        type: 'bar'
+                    }]
+            };
+
+        myChart.setOption(option);
+    </script>
+
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+     <div class="container">
+      <div class="copyright">
+        &copy;  南网项目
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="static/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
