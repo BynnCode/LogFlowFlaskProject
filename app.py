@@ -12,11 +12,9 @@ def index():
 def home():
     return index()
 
-
 @app.route('/fastlog')
 def fastlog():
     datalist= queryFuncs.queryFastlog()
-
     return render_template("suricata/fastlog.html", datalists = datalist)
 
 
