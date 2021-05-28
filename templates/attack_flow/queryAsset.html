@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-    <script src="static/assets/js/echarts.min.js"></script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="static/assets/js/echarts.min.js"></script>
 
-  <title>日志模块</title>
+  <title>数据分析</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -34,12 +33,12 @@
 
 
 
-  <!-- ======= Header ======= -->
+ <!-- ======= Header ======= -->
   <header id="header">
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="../temp.html"><span>模块数据展示与分析</span></a></h1>
+        <h1 class="text-light"><a href="temp.html"><span>模块数据展示与分析</span></a></h1>
       </div>
 
       <nav class="nav-menu float-right d-none d-lg-block">
@@ -94,89 +93,99 @@
     </div>
   </header><!-- End Header -->
 
- <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
+  <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
       <div class="container">
 
-        <div class="row no-gutters">
-          <div class="col-lg-6 video-box">
-            <div id="TypeMain" style="width: 700px;height:450px;margin-left: 10%"></div>
+        <div class="section-title">
+          <h2>被访问资产比例</h2>
+        </div>
 
-          </div>
+        <!-- ======= Counts Section ======= -->
+    <section class="counts section-bg">
+      <div class="container">
+{#        {% for datalistIp in datalistIps %}#}
+{#                  <span>{{datalistIp}}</span>#}
+{#        {% endfor %}#}
 
-          <div class="col-lg-6 d-flex flex-column justify-content-center about-content">
+            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+            <div id="main" style="width: 100%;height:300px">
+{#                {% for datalistIp in datalistIps %}#}
+{#                  <td>{{datalistIp}}</td>#}
+{#                {% endfor %}#}
+            </div>
+            <div id="ipMap" style="width: 100%;height:300px">
 
-            <div class="section-title" style="margin-left: 10%">
-              <h2>告警数量</h2>
             </div>
 
 
-          </div>
-        </div>
+      </div>
+    </section><!-- End Counts Section -->
 
       </div>
-    </section><!-- End About Us Section -->
-    <script>
-        var chartDom = document.getElementById('TypeMain');
+    </section><!-- End Our Team Section -->
+
+    <script type="text/javascript">
+
+        var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
+        var option;
 
-        var option = {
-                tooltip: {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data: ['WARNING_COUNT']
-                },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        dataZoom: {
-                            yAxisIndex: 'none'
-                        },
-                        dataView: {readOnly: false},
-                        magicType: {type: ['line', 'bar']},
-                        restore: {},
-                        saveAsImage: {}
+        option = {
+            title: {
+                text: '被访问资产比例',
+                subtext: '',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        {value: 1048, name: '192.168.2.101 1'},
+                        {value: 735, name: '192.168.2.11 1'},
+                        {value: 580, name: '192.168.1.11 4'},
+                        {value: 484, name: '192.168.3.101 0'},
+                        {value: 300, name: '192.168.1.101 1'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
                     }
-                },
-                xAxis: {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLabel: {
-                        formatter: '{value} °C'
-                    }
-                },
-                series: [
-                    {
-                        name: 'WARNING_COUNT',
-                        type: 'line',
-                        data: [10, 11, 13, 11, 12, 12, 9],
-                        markPoint:{
-                    data:[
-                      {type:'max',name:'WARNING_COUNT'}
-                    ]
-                  }
-                    }
-                ]
-            };
+                }
+            ]
+        };
 
-        myChart.setOption(option);
+        option && myChart.setOption(option);
+
+
+        {#地图部分#}
+
+
     </script>
-
-
 
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
+
      <div class="container">
       <div class="copyright">
         &copy;  南网项目
       </div>
+
+    </div>
 
     </div>
   </footer><!-- End Footer -->
@@ -194,7 +203,6 @@
   <script src="static/assets/vendor/counterup/counterup.min.js"></script>
   <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="static/assets/vendor/aos/aos.js"></script>
-
   <!-- Template Main JS File -->
   <script src="static/assets/js/main.js"></script>
 
