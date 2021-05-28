@@ -108,5 +108,20 @@ def warnnumip():
 def warnlog():
     return render_template("logs/warnLog.html")
 
+@app.route('/flowaccess')
+def flowaccess():
+    return render_template("attack_flow/flowAccess.html")
+
+@app.route('/queryasset')
+def queryasset():
+    return render_template("attack_flow/queryAsset.html")
+
+@app.route('/flowtrend')
+def flowtrend():
+    return render_template("attack_flow/flowTrend.html")
+
+
+
+
 if __name__ == '__main__':
     app.run()

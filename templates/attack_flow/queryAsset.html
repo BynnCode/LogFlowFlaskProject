@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="static/assets/js/echarts.min.js"></script>
+
+  <title>数据分析</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+ <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="temp.html"><span>模块数据展示与分析</span></a></h1>
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/index">首页<i class="la la-angle-down"></i></a></li>
+          <li class="drop-down">
+              <a>Suricata攻击检测模块</a>
+              <ul>
+                  <li><a href="/fastlog">日志数据</a></li>
+                  <li><a href="/srcip">源IP</a></li>
+                  <li><a href="/dstip">目的IP</a></li>
+                  <li><a href="/type">攻击类型</a></li>
+                  <li><a href="/attackFlow">攻击展示</a></li>
+                  <li><a href="/attackFlow">攻击流量</a></li>
+                  <li><a href="/flow">正常异常流量</a></li>
+              </ul>
+          </li>
+          <li class="drop-down">
+              <a>攻击和流量分析模块</a>
+              <ul>
+                  <li><a href="/flowaccess">流量访问</a></li>
+                  <li><a href="/queryasset">被访问资产</a></li>
+                  <li><a href="/flowtrend">当前流量趋势</a></li>
+              </ul>
+          </li>
+          <li class="drop-down">
+              <a>资产模块</a>
+              <ul>
+                  <li><a href="/assetvaluation">资产评估</a></li>
+                  <li><a href="/assetview">资产一览</a></li>
+                  <li><a href="/assetbug">资产漏洞</a></li>
+                  <li><a href="/bugsource">漏洞来源</a></li>
+                  <li><a href="/locasset">各地资产统计</a></li>
+                  <li><a href="/safetydevice">安全设备</a></li>
+                  <li><a href="/softtype">软件类型</a></li>
+                  <li><a href="/devicetype">资产设备类型</a></li>
+              </ul>
+          </li>
+          <li class="drop-down">
+              <a>日志模块</a>
+              <ul>
+                  <li><a href="/commentpart">评价部分</a></li>
+                  <li><a href="/warnnum">告警数量</a></li>
+                  <li><a href="/warnnumip">告警数量(IP)</a></li>
+                  <li><a href="/warnlog">告警数量日志</a></li>
+              </ul>
+          </li>
+
+        </ul>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>被访问资产比例</h2>
+        </div>
+
+        <!-- ======= Counts Section ======= -->
+    <section class="counts section-bg">
+      <div class="container">
+{#        {% for datalistIp in datalistIps %}#}
+{#                  <span>{{datalistIp}}</span>#}
+{#        {% endfor %}#}
+
+            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+            <div id="main" style="width: 100%;height:300px">
+{#                {% for datalistIp in datalistIps %}#}
+{#                  <td>{{datalistIp}}</td>#}
+{#                {% endfor %}#}
+            </div>
+            <div id="ipMap" style="width: 100%;height:300px">
+
+            </div>
+
+
+      </div>
+    </section><!-- End Counts Section -->
+
+      </div>
+    </section><!-- End Our Team Section -->
+
+    <script type="text/javascript">
+
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: '被访问资产比例',
+                subtext: '',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        {value: 1048, name: '192.168.2.101 1'},
+                        {value: 735, name: '192.168.2.11 1'},
+                        {value: 580, name: '192.168.1.11 4'},
+                        {value: 484, name: '192.168.3.101 0'},
+                        {value: 300, name: '192.168.1.101 1'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+
+
+        {#地图部分#}
+
+
+    </script>
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+
+     <div class="container">
+      <div class="copyright">
+        &copy;  南网项目
+      </div>
+
+    </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="static/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
