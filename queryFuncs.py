@@ -26,7 +26,6 @@ def querySrcip():
         conn.close()
         raise (err)
     datalist = c1.fetchall()
-
     conn.close
     return datalist
 
@@ -40,7 +39,6 @@ def queryDstip():
         conn.close()
         raise (err)
     datalist = c1.fetchall()
-
     conn.close
     return datalist
 
@@ -53,9 +51,7 @@ def queryType():
     except Exception as err:
         conn.close()
         raise (err)
-
     TypeNum = c1.fetchall()[0]
-
     conn.close()
     return TypeNum
 
@@ -68,7 +64,6 @@ def queryFlowTrend():
     except Exception as err:
         conn.close()
         raise (err)
-
     dataTemp = c1.fetchall()
     datalists = []
     for data in dataTemp:
@@ -88,8 +83,6 @@ def queryFlow():
     except Exception as err:
         conn.close()
         raise (err)
-
     data = c1.fetchall()[0]
-
     conn.close()
     return data

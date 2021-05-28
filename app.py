@@ -121,7 +121,5 @@ def flowtrend():
     return render_template("attack_flow/flowTrend.html")
 
 
-
-
 if __name__ == '__main__':
     app.run()
