@@ -12,9 +12,11 @@ def index():
 def home():
     return index()
 
+
 @app.route('/fastlog')
 def fastlog():
     datalist= queryFuncs.queryFastlog()
+
     return render_template("suricata/fastlog.html", datalists = datalist)
 
 
@@ -107,21 +109,6 @@ def warnnumip():
 @app.route('/warnlog')
 def warnlog():
     return render_template("logs/warnLog.html")
-
-@app.route('/flowaccess')
-def flowaccess():
-    return render_template("attack_flow/flowAccess.html")
-
-@app.route('/queryasset')
-def queryasset():
-    return render_template("attack_flow/queryAsset.html")
-
-@app.route('/flowtrend')
-def flowtrend():
-    return render_template("attack_flow/flowTrend.html")
-
-
-
 
 if __name__ == '__main__':
     app.run()

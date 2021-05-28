@@ -55,6 +55,7 @@ def queryType():
         raise (err)
 
     TypeNum = c1.fetchall()[0]
+    print(TypeNum)
 
     conn.close()
     return TypeNum
